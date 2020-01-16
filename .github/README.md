@@ -108,9 +108,3 @@ NETWORK=webproxy
 ```
 
 **Be patient** - when you first run a container to get new certificates, it may take a few minutes.
-
-----
-
-### Make sure the webtrees data files has user and group set to **www-data**, so you could update, install, delete files from your admin panel.
-
-----
