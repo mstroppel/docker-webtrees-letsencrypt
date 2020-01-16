@@ -58,7 +58,7 @@ networks:
          name: ${NETWORK}
 ```
 
-> **[IMPORTANT]** Make sure to update your **services** name for each application so it does not conflicts with another service, such as, in the _docker_compose.yml_ where we have **db** you could use **site1-db**, and **webtrrd** you could use **site1-webtrees**. Update this to site2 when you put up a new site.
+> **[IMPORTANT]** Make sure to update your **services** name for each application so it does not conflicts with another service, such as, in the _docker_compose.yml_ where we have **db** you could use **site1-db**, and **webtrees** you could use **site1-webtrees**. Update this to site2 when you put up a new site.
 
 1. Make a copy of our .env.sample and rename it to .env:
 
@@ -112,11 +112,5 @@ NETWORK=webproxy
 ----
 
 ### Make sure the webtrees data files has user and group set to **www-data**, so you could update, install, delete files from your admin panel.
-
-----
-
-## WebProxy
-
-[WebProxy - docker-compose-letsencrypt-nginx-proxy-companion](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion)
 
 ----
