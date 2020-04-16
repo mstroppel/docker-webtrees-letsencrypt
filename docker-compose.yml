@@ -1,39 +1,39 @@
 version: '3'
 
 services:
-   webtrees-db:
-     container_name: ${DB_CONTAINER_NAME}
-     image: mariadb:10
-     restart: unless-stopped
-     volumes:
-        - ${LOCAL_DB_DIR}:/var/lib/mysql
-     environment:
-       MYSQL_DATABASE: ${MYSQL_DATABASE}
-       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-       MYSQL_USER: ${MYSQL_USER}
-       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  webtrees-db:
+    container_name: ${DB_CONTAINER_NAME}
+    image: mariadb:10
+    restart: unless-stopped
+    volumes:
+      - ${LOCAL_DB_DIR}:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
 
-   webtrees-site:
-     depends_on:
-       - ${DB_CONTAINER_NAME}
-     container_name: ${APP_CONTAINER_NAME}
-     image: justinvoelker/docker-webtrees:${WEBTREES_VERSION}
-     restart: unless-stopped
-     volumes:
-       - ${WEBTREES_DATA_DIR}:/var/www/html/data
-     environment:
-       SERVER_NAME: ${VIRTUAL_HOST}
-       WEBTREES_DB_HOST: ${DB_CONTAINER_NAME}
-       WEBTREES_DB_PORT: 3306
-       WEBTREES_DB_USER: ${MYSQL_USER}
-       WEBTREES_DB_PASS: ${MYSQL_PASSWORD}
-       WEBTREES_DB_NAME: ${MYSQL_DATABASE}
-       WEBTREES_TBL_PFX: wt_
-       VIRTUAL_HOST: ${VIRTUAL_HOST}
-       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
-       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+  webtrees-site:
+    depends_on:
+      - ${DB_CONTAINER_NAME}
+    container_name: ${APP_CONTAINER_NAME}
+    image: justinvoelker/docker-webtrees:${WEBTREES_VERSION}
+    restart: unless-stopped
+    volumes:
+      - ${WEBTREES_DATA_DIR}:/var/www/html/data
+    environment:
+      SERVER_NAME: ${VIRTUAL_HOST}
+      WEBTREES_DB_HOST: ${DB_CONTAINER_NAME}
+      WEBTREES_DB_PORT: 3306
+      WEBTREES_DB_USER: ${MYSQL_USER}
+      WEBTREES_DB_PASS: ${MYSQL_PASSWORD}
+      WEBTREES_DB_NAME: ${MYSQL_DATABASE}
+      WEBTREES_TBL_PFX: wt_
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
 
 networks:
-    default:
-       external:
-         name: ${NETWORK}
+  default:
+    external:
+      name: ${NETWORK}
