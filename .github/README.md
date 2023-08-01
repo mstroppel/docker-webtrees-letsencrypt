@@ -2,7 +2,7 @@
 
 This docker-compose should be used with WebProxy (the NGINX Proxy):
 
-[https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion](https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion)
+GitHub repo [evertramos/nginx-proxy-automation](https://github.com/evertramos/nginx-proxy-automation)
 
 ## Usage
 
